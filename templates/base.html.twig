@@ -1,19 +1,100 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {#    CSS -------------------------------------------------------#}
+    <link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}">
+    {#    Font ------------------------------------------------------#}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <title>{% block title %}{% endblock %} - Les magiciens du fouet !</title>
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
+</head>
+    {#    *************************************************************************************#}
+    {#    *********************** NAVIGATION ************************************************#}
+    {#    *************************************************************************************#}
+<body>
+
+        <ul class="menu">
+            <li class="menu-item"><a href="{{ path('home') }}">Recettes 🍳</a></li><div class="trait-menu"></div>
+            <li class="menu-item"><a href="#">Cuisiniers 👨</a></li><div class="trait-menu"></div>
+            <li class="menu-item"><a href="{{ path('contact') }}">Nous contacter ✉️</a></li><div class="trait-menu"></div>
+
+                {% if(app.user) %}
+            <li class="menu-item">
+                <a href="{{ path('account') }}">Mon compte 💻</a>
+            </li><div class="trait-menu"></div>
+            <li class="menu-item">
+                <a href="{{ path('app_logout') }}">Deconnecter 🔒</a>
+            </li>
+                {% else %}
+            <li class="menu-item">
+                <a href="{{ path('register') }}"> S'inscrire 👍</a>
+            </li><div class="trait-menu"></div>
+            <li class="menu-item">
+                <a href="{{ path('app_login') }}">Connection 🔑</a>
+            </li>
+                {% endif %}
+
+        </ul>
+
+        {#    *************************************************************************************#}
+        {#    *********************** HEADER ************************************************#}
+        {#    *************************************************************************************#}
+
+        <div class="Logo-Page-title">
+            <img src="{{ asset('assets/img/Logo.png') }}" class="logo" alt="Logo Magiciens du fouet">
+            <h1>{% block PageTitle %}{% endblock%} </h1>
+        </div>
+
+
+        <div class="header">
+            <div class="texte-header">
+                
+            </div>
+            <div class="image-header">
+                
+            </div>
+        </div>
+
+
+
+        {#    *************************************************************************************#}
+    {#    *********************** MAIN CONTENT ************************************************#}
+    {#    *************************************************************************************#}
+
+    <div class="content">
+
+        <div class="main-content">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+
+
+        <div class="aside-content">
+            {% block aside %}
+            {% endblock %}
+        </div>
+    </div>
+
+     {#    *************************************************************************************#}
+     {#    *********************** FOOTER ************************************************#}
+     {#    *************************************************************************************#}
+        <div class="trait"></div>
+
+        <footer>
+            <p>Réalisé par Cedrick Pommier en 2021. <br>  Tous droits réservés ©️<br>  Utilisation de Symfony </p>
+        </footer>
+
+
+        {#    *************************************************************************************#}
+        {#    *********************** SCRIPTS ************************************************#}
+        {#    *************************************************************************************#}
+
+        {% block javascript %}{% endblock %}
     </body>
 </html>
