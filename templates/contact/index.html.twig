@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Contactez-nous {% endblock %}
+
+{% block PageTitle %} Contactez-nous {% endblock%}
+
+
+{# //////////////////////////////////////////////////////////////////////////////////////////#}
+{#/////////////  MAIN /////////////////////////////////////////////////////////////////////#}
+{#//////////////////////////////////////////////////////////////////////////////////////////#}
+
+{% block content %}
+
+    {% for message in app.flashes('notice') %}
+        <div class="message-form">{{ message }}</div>
+    {% endfor %}
+
+    <h2>Vous souhaitez nous laisser un message ? </h2>
+    <div class="formulaire">
+        {{ form(form) }}
+    </div>
+
+    <div>
+        <h2>Les magiciens du fouet </h2>
+        <h3>10 rue des Lilas <br> 44100 Nantes <br> 02 34 56 78 65 <br> contact@magiciens.com </h3>
+    </div>
+
+{% endblock %}
+
+{#//////////////////////////////////////////////////////////////////////////////////////////#}
+{#/////////////  ASIDE /////////////////////////////////////////////////////////////////////#}
+{#//////////////////////////////////////////////////////////////////////////////////////////#}
+
+{% block aside %}
+
+ AFFICHER LE MEILLEUR CUISINIER <br>
+
+ AFFICHER LA MEILLEUR RECETTE
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Connexion {% endblock %}
+
+{% block PageTitle %} Inscription - Les Magiciens {% endblock%}
+
+{% block content %}
+
+    <div class="formulaire">
+        {#        {% if (message) %}#}
+        {#            <h3 class="message-form">{{ message }}</h3>#}
+        {#        {% endif %}#}
+
+        {{ form(form) }}
+    </div>
+
+{% endblock %}
+

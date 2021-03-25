@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+
+    {#    *************************************************************************************#}
+    {#    *********************** TITRES ************************************************#}
+    {#    *************************************************************************************#}
+{#Le titre de la fenetre#}
+{% block title %}Se connecter {% endblock %}
+
+{#Le titre de la page #}
+{% block PageTitle %} Bienvenue dans votre espace de connexion{% endblock%}
+
+    {#    *************************************************************************************#}
+    {#    *********************** CONTENU ************************************************#}
+    {#    *************************************************************************************#}
+{% block content %}
+<form method="post">
+    <div class="formulaire">
+        {% if error %}
+            <div class="message-form">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+
+        <h2 class="">Veuillez vous connecter</h2>
+
+        <label for="inputEmail"><p>Votre adresse email</p></label>
+        <p>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+        </p>
+
+        <label for="inputPassword"><p>Votre mot de passe</p></label>
+        <p>
+            <input type="password" name="password" id="secuid10" class="form-control" required>
+        </p>
+
+
+        <p><input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"></p>
+
+        <div class="form-checkbox">
+            <label>
+                <p><input type="checkbox" name="_remember_me"> Se souvenir de moi</p>
+            </label>
+        </div>
+
+
+    <button class="form-submit" type="submit"><p>Se connecter</p></button>
+
+    </div>
+</form>
+{% endblock %}
+
+    {#    *************************************************************************************#}
+    {#    *********************** BLOCK ASIDE ************************************************#}
+    {#    *************************************************************************************#}
+{% block aside %}
+    <body onload='securi()'>
+
+            <div class="pad-pave">
+                <table id='secure'>
+                    <tr class="pad-numerique">
+                        <td class='divimage'><p>titre</p></td>
+                        <td class='divimage'><p>titre</p></td>
+                        <td class='divimage'><p>titre</p></td>
+                        <td class='divimage'><p>titre</p></td>
+                        <td class='divimage'><p>titre</p></td>
+                        <td class='divimage'><p>titre</p></td>
+                        <td class='divimage'><p>titre</p></td>
+                        <td class='divimage'><p>titre</p></td>
+                        <td class='divimage'><p>titre</p></td>
+                        <td class='divimage'><p>titre</p></td>
+                    </tr>
+                </table>
+                <div class="pad-effacer" onclick='roze()'> <p>effacer</p> </div>
+            </div>
+
+        </div>
+        </div>
+    </article>
+{% endblock %}
+
+            {#    *************************************************************************************#}
+            {#    *********************** SCRIPT JS ************************************************#}
+            {#    *************************************************************************************#}
+{% block javascript %}
+        <script src="{{ asset('assets/js/pad.js') }}"></script>
+{% endblock %}
